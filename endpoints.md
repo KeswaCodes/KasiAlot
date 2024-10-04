@@ -4,15 +4,14 @@
 ### POST /api/users/register
 
 ```json
-    {
-        "name": "John Doe",
-        "email": "john.doe@example.com",
-        "location": "New York",
-        "skills": ["JavaScript", "Node.js","MongoDB"],
-        "contactNumber": "1234567890"
-    }
+{
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phoneNumber": "+1234567890",
+    "password": "securePassword123"
+}
 ```
-
+<!-- 
 ## Get User Profile
 ### GET /api/users/profile/:email
     - Replace :email with the user's email. Use a GET request.
@@ -70,4 +69,4 @@
     "skills": ["Plumbing", "Carpentry"],
     "contactNumber": "1234567890"
     }
-```
+``` -->
