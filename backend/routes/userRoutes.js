@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const { check } = require('express-validator');
+
 
 router.post('/register', async (req, res) => {
     const { name, email, phoneNumber, password } = req.body;
