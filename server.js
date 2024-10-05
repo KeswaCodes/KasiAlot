@@ -1,12 +1,11 @@
 const express = require('express');
 const db = require('./database');
-
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.get('/tasks', (req, res) => {
-    db.all('SELECT * FROM tasks', [], (err, rows) => {
+app.get('/concerns', (req, res) => {
+    db.all('SELECT * FROM concerns', [], (err, rows) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
@@ -14,7 +13,6 @@ app.get('/tasks', (req, res) => {
         res.json(rows);
     });
 });
-
 
 
 app.get('/reviews', (req, res) => {
@@ -28,10 +26,18 @@ app.get('/reviews', (req, res) => {
 });
 
 
-
 app.post('/concerns', (req, res) => {
+    const {latitude, longitude, category, message, priority} = req.body; // Get latitude and longitude from the request body
+
+    const values = [
+        latitude || null,
+        longitude || null,
+        message || null,  // Make sure to maintain the same order as in the SQL statement
+        category || null,
+        priority || null
+    ];
     
-    db.run(`INSERT INTO concerns (latitude, longitude) VALUES (?, ?)`, [latitude, longitude], function (err) {
+    db.run(`INSERT INTO concerns (latitude, longitude, category, message, priority) VALUES (?, ?, ?, ?, ?)`, values, function (err) {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
@@ -43,16 +49,15 @@ app.post('/concerns', (req, res) => {
 
 
 app.post('/reviews', (req, res) => {
-    const {latitude, longitude, category, message} = req.body; // Get latitude and longitude from the request body
+    const {latitude, longitude, message, nature} = req.body; // Get latitude and longitude from the request body
 
     const values = [
-    latitude || null,
-    longitude || null,
-    category || null,
-    message || null,
+        latitude || null,
+        longitude || null,
+        message || null,  // Make sure to maintain the same order as in the SQL statement
+        nature || null,
     ];
     
-    // const { latitude, longitude } = req.body; // Get latitude and longitude from the request body
     db.run(`INSERT INTO reviews (latitude, longitude, message, nature) VALUES (?, ?, ?, ?)`, values, function (err) {
         if (err) {
             res.status(500).json({ error: err.message });

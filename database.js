@@ -7,13 +7,15 @@ const db = new sqlite3.Database('./database.db', (err) => {
     }
 });
 
+
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS concerns (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        category TEXT,
         latitude INTEGER,
         longitude INTEGER,
+        category TEXT,
         message TEXT,
+        priority INTEGER,
         img BLOB
     )`);
 
@@ -26,7 +28,7 @@ db.serialize(() => {
         nature TEXT
     )`);
 
-    
+
     
     
     
