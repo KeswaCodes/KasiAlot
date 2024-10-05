@@ -10,9 +10,27 @@ const db = new sqlite3.Database('./database.db', (err) => {
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS concerns (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        category TEXT,
         latitude INTEGER,
-        longitude INTEGER
+        longitude INTEGER,
+        message TEXT,
+        img BLOB
     )`);
+
+
+    db.run(`CREATE TABLE IF NOT EXISTS reviews (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        latitude INTEGER,
+        longitude INTEGER,
+        message TEXT,
+        nature TEXT
+    )`);
+
+    
+    
+    
+    
+    
 
 });
 
