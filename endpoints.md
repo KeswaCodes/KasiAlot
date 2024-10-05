@@ -11,34 +11,40 @@
     "password": "securePassword123"
 }
 ```
-<!-- 
+
 ##  Update User Profile
-### PUT /api/users/profile/:email
+### POST api/users/login
 
-- Replace :email with the user's email. Use a PUT request.
-
-```json
-    {
-        "name": "John Doe",
-        "location": "San Francisco",
-        "skills": ["JavaScript", "Node.js"],
-        "contactNumber": "0987654321"
-    }
-```
-
-## Post a Job/Task
-### POST /api/tasks
 
 ```json
-    {
-        "taskName": "Windows",
-        "compensation": 500,
-        "description": "Clean my windows.",
-        "location": "Remote",
-        "userEmail": "john.doe@example.com"
-    }
+{
+    "email": "johndoe@example.com",
+    "password": "securePassword123"
+}
+
 ```
 
+### POST /api/posts
+
+```json
+{
+    "title": "Late Delivery",
+    "content": "The delivery was two days late.",
+    "username": "john_doe",  // Username instead of userId
+    "postType": "complaint",
+    "nature": "Delivery Issue"
+}
+
+
+{
+    "title": "Great Customer Service",
+    "content": "The customer service was excellent!",
+    "username": "jane_doe",  // Username instead of userId
+    "postType": "review",
+    "nature": "Customer Service"
+}
+```
+<!-- 
 ## Get All Jobs/Tasks
 ### GET /api/tasks
 
