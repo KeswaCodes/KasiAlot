@@ -1,25 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors'); 
-// const connect = require('./config/db')
-const userRoutes = require('./routes/userRoutes'); 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const cors = require('cors');
+const userRoutes = require('./routes/userRoutes');
+const postRoutes = require('./routes/postRoutes');
+const path = require('path');
 const uri = process.env.MONGODB_URI;
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(
-    uri);
-
-// const client = new MongoClient(uri, {
-//     serverApi: {
-//       version: ServerApiVersion.v1,
-//       strict: true,
-//       deprecationErrors: true,
-//     }
-//   });
+mongoose.connect(uri);
 
 const corsOptions = {
     origin: 'http://localhost:3000', 
@@ -32,7 +23,12 @@ const connection = mongoose.connection;
 app.use(cors(corsOptions)); 
 
 app.use(express.json());
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
+
+
 app.post('/', (request, response) => {
     response.send('Hello, Big Man!')
 })
