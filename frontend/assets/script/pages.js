@@ -45,6 +45,7 @@ function getRouteContent(route) {
                         <option value="electricity" id="concernCategory">Electricity</option>
                         <option value="water" id="concernCategory">Water</option>
                         <option value="crime" id="concernCategory">Crime</option>
+                        <option value="service delivery" id="serviceDelivery">Service Delivery</option>
                     </select>
                     
                     <div class="py-3">
