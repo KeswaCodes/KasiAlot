@@ -10,30 +10,31 @@
         <div>
             <div>
                 <label for="name">Name</label>
-                <input type="name" name="name" id="name" placeholder="Enter your full name...">
+                <input type="name" name="fullname" id="fullname" placeholder="Enter your full name..." required>
             </div>
             <div>
                 <label for="email">E-mail</label>
-                <input type="email" name="email" id="email" placeholder="email@org.co.za">
+                <input type="email" name="email" id="email" placeholder="email@org.co.za" required>
             </div>
             <div>
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter yout username">
+                <input type="text" name="username" id="username" placeholder="Enter yout username" required>
             </div>
             <div>
                 <label for="contactNumber">Contact Number</label>
-                <input type="text" name="contactNumber" id="contactNumber" placeholder="enter your contact number">
+                <input type="text" name="contactNumber" id="contactNumber" placeholder="enter your contact number" required>
             </div>
             <div>
                 <label for="userPassword">Password</label>
-                <input type="password" name="userPassword" id="userPassword" placeholder="Enter password">
+                <input type="password" name="userPassword" id="userPassword" placeholder="Enter password" minlength="8" required>
             </div>
             <div>
                 <label for="confirmPassword">Confirm Password</label>
-                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password">
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password" required>
             </div>
         </div>
-        <button type="submit">Enter</button>
+        <button type="submit" onclick="verify()">Enter</button>
     </form>
+    <script src="assets/script/registration.js"></script>
 </body>
 </html>
