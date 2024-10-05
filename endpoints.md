@@ -12,11 +12,6 @@
 }
 ```
 <!-- 
-## Get User Profile
-### GET /api/users/profile/:email
-    - Replace :email with the user's email. Use a GET request.
-
-
 ##  Update User Profile
 ### PUT /api/users/profile/:email
 
