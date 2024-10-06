@@ -29,10 +29,10 @@ db.serialize(() => {
     )`);
 
 
-    
-    
-    
-    
+    db.run(`CREATE TABLE IF NOT EXISTS users (
+        username TEXT UNIQUE,
+        pswd TEXT
+        )`);
 
 });
 
