@@ -22,10 +22,7 @@ db.serialize(() => {
 
     db.run(`CREATE TABLE IF NOT EXISTS reviews (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        latitude INTEGER,
-        longitude INTEGER,
-        message TEXT,
-        nature TEXT
+        message TEXT
     )`);
 
 

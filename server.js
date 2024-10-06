@@ -1,7 +1,7 @@
 const express = require('express');
 const db = require('./database');
 const app = express();
-const PORT = 3001;
+const PORT = 4000;
 const userComplaints = require('./complaints');
 
 app.use(express.json());
@@ -22,62 +22,35 @@ app.get('/reviews', (req, res) => {
 
 
 app.get('/user', (req, res) => {
-    
     db.all('SELECT * FROM users', [], (err, rows) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
         }
         let userDB = res.json(rows);
-        // console.log(userDB);
     });
-    
-    
-    // db.all('SELECT * FROM reviews', [], (err, rows) => {
-    //     if (err) {
-    //         res.status(500).json({ error: err.message });
-    //         return;
-    //     }
-    //     res.json(rows);
-    // });
 });
 
 
 
-
+//  adds new user to db
 app.post('/user', (req, res) => {
 
-    const {username, password} = req.body; // Get latitude and longitude from the request body
-    
-    console.log(username);
-    console.log(password);
-    
-    
-    // const values = [
-    //     username || null,
-    //     password || null
-    // ];
+    const {username, pswd} = req.body; // Get latitude and longitude from the request body
+    const values = [
+        username || null,
+        pswd || null
+    ];
 
-    
-
-    // db.all('INSERT INTO concerns (username, password) VALUES (?, ?)', values, (err, rows) => {
-    //     if (err) {
-    //         res.status(500).json({ error: err.message });
-    //         return;
-    //     }
-    //     let userDB = res.json(rows);
-    //     console.log(userDB);
-    // });
-    
-    
-    // db.all('SELECT * FROM reviews', [], (err, rows) => {
-    //     if (err) {
-    //         res.status(500).json({ error: err.message });
-    //         return;
-    //     }
-    //     res.json(rows);
-    // });
+    db.run(`INSERT INTO users (username, pswd) VALUES (?, ?)`, values, function (err) {
+    if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+    }
+    res.status(201).json({ id: this.lastID }); // Return the ID of the inserted record
+    });
 });
+
 
 
 
@@ -105,16 +78,12 @@ app.post('/concerns', (req, res) => {
 
 
 app.post('/reviews', (req, res) => {
-    const {latitude, longitude, message, nature} = req.body; // Get latitude and longitude from the request body
-
+    const {message} = req.body; // Get latitude and longitude from the request body
     const values = [
-        latitude || null,
-        longitude || null,
-        message || null,  // Make sure to maintain the same order as in the SQL statement
-        nature || null,
-    ];
+        message || null // Make sure to maintain the same order as in the SQL statement
+];
     
-    db.run(`INSERT INTO reviews (latitude, longitude, message, nature) VALUES (?, ?, ?, ?)`, values, function (err) {
+    db.run(`INSERT INTO reviews (message) VALUES (?)`, values, function (err) {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
@@ -128,3 +97,12 @@ app.post('/reviews', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+
+
+
+
+
+
+
