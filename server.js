@@ -1,11 +1,13 @@
 const express = require('express');
 const db = require('./database');
 const bcrypt = require('bcrypt');
-const cors = require('cors'); // Import CORS
+const path = require('path');
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'frontend')));
 app.use(express.json());
 
 
@@ -54,6 +56,26 @@ app.post('/register', (req, res) => {
                 }
                 res.status(201).json({ message: 'User registered successfully.', userId: this.lastID });
             });
+        });
+    });
+});
+
+app.post('/login', (req, res) => {
+    const { username, userPassword } = req.body;
+
+    db.get('SELECT * FROM users WHERE username = ?', [username], (err, user) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error.' });
+        }
+        if (!user) {
+            return res.status(401).json({ error: 'Invalid username or password.' });
+        }
+
+        bcrypt.compare(userPassword, user.password, (err, match) => {
+            if (err || !match) {
+                return res.status(401).json({ error: 'Invalid username or password.' });
+            }
+            res.json({ message: 'Login successful!', userId: user.id });
         });
     });
 });

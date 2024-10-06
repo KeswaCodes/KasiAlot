@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kasialot</title>
-    <link rel="stylesheet" href="main.css">
+    <title>Kasialot | Login</title>
+    <link rel="stylesheet" href="assets/styles/main.css">
 </head>
 <body>
     <main>
-        <div>
-            <label for="username">UserName</label>
-            <input type="text" name="username" id="username" placeholder="Enter user name">
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" name="userPassword" id="userPassword" placeholder="Enter your password">
-        </div>
-        <div>
-            <button type="submit">Login</button>
-        </div>
-        <a href="/">Forgot password</a>
+        <form id="loginForm">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter username" required>
+            </div>
+            <div>
+                <label for="userPassword">Password</label>
+                <input type="password" name="userPassword" id="userPassword" placeholder="Enter your password" required>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+            <a href="/">Forgot password</a>
+        </form>
     </main>
+    <script src="assets/script/login.js"></script>
 </body>
 </html>
