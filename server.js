@@ -82,6 +82,12 @@ app.post('/login', (req, res) => {
 
 
 app.get('/concerns', (req, res) => {
+    const { userArea, concernCategory, userConcern } = req.body;
+
+    if (!userArea || !concernCategory || !userConcern) {
+        return res.status(400).json({ error: 'All fields are required.' });
+    }
+
     db.all('SELECT * FROM concerns', [], (err, rows) => {
         if (err) {
             res.status(500).json({ error: err.message });
