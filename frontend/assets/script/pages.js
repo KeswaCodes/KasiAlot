@@ -4,50 +4,10 @@ function router() {
     let route = window.location.hash.slice(1); // Remove '#' from URL hash
     app.innerHTML = getRouteContent(route);
 
-    // Initialize event listeners after content is loaded
+    // Initialize event listener for location button after content is loaded
     const getLocationBtn = document.getElementById('getLocationBtn');
     if (getLocationBtn) {
         getLocationBtn.addEventListener('click', getLocation);
-    }
-
-    const form = document.querySelector("form");
-    if (form) {
-        form.addEventListener("submit", handleFormSubmit);
-    }
-}
-
-// Function to handle form submission
-async function handleFormSubmit(event) {
-    event.preventDefault();
-
-    // Capture data from form fields
-    const data = {
-        latitude: document.getElementById("latitude").value,
-        longitude: document.getElementById("longitude").value,
-        reviewNature: document.getElementById("reviewNatureSelect") ? document.getElementById("reviewNatureSelect").value : "",
-        userReview: document.getElementById("userReview") ? document.getElementById("userReview").value : "",
-        concernCategory: document.getElementById("concernCategory") ? document.getElementById("concernCategory").value : "",
-        userConcern: document.getElementById("userConcern") ? document.getElementById("userConcern").value : ""
-    };
-
-    try {
-        const response = await fetch("http://localhost:5000/api/posts", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-        });
-
-        if (response.ok) {
-            const result = await response.json();
-            console.log("Response from server:", result);
-            alert("Form submitted successfully!");
-        } else {
-            console.error("Failed to submit form:", response.statusText);
-            alert("Failed to submit form.");
-        }
-    } catch (error) {
-        console.error("Error submitting data:", error);
-        alert("Error submitting form.");
     }
 }
 
@@ -60,14 +20,14 @@ function getRouteContent(route) {
                 <form class="flex max-w-96 flex-col border-solid rounded-lg">
                     <div class="flex justify-between py-3">
                         <label for="userArea">Area</label>
-                        <button type="button" id="getLocationBtn">Get Location</button>
-                        <input type="text" name="latitude" id="latitude" class="border-solid border-2 rounded-lg border-slate-950">
-                        <input type="text" name="longitude" id="longitude" class="border-solid border-2 rounded-lg border-slate-950">
+                        <button type="button" id="getLocationBtn" class="bg-emerald-500 h-12 px-6 rounded-lg font-semibold text-white">Get Location</button>
+                        <input type="text" name="latitude" id="latitude" class="border-solid border-2 rounded-lg border-slate-950 mx-2">
+                        <input type="text" name="longitude" id="longitude" class="border-solid border-2 rounded-lg border-slate-950 mx-2">
                     </div>
                     <select name="reviewNature" id="reviewNatureSelect" class="py-3">
                         <option value="" selected>Select nature of review</option>
-                        <option value="compliment">Compliment</option>
-                        <option value="complain">Complain</option>
+                        <option value="compliment" id="reviewNature">Compliment</option>
+                        <option value="complain" id="reviewNature">Complain</option>
                     </select>
                     
                     <div class="py-3">
@@ -84,17 +44,17 @@ function getRouteContent(route) {
                 <form class="flex max-w-96 flex-col border-solid rounded-lg">
                     <div class="flex justify-between py-3">
                         <label for="userArea">Area</label>
-                        <button type="button" id="getLocationBtn">Get Location</button>
+                        <button type="button" id="getLocationBtn" class="bg-emerald-500 h-12 px-6 rounded-lg font-semibold text-white">Get Location</button>
                         <input type="text" name="latitude" id="latitude" class="border-solid border-2 rounded-lg border-slate-950">
                         <input type="text" name="longitude" id="longitude" class="border-solid border-2 rounded-lg border-slate-950">
                     </div>
                     <select name="concernCategory" id="concernCategory" class="py-3">
                         <option value="" selected>Choose concern category</option>
-                        <option value="Road and Transportation">Road and Transportation</option>
-                        <option value="electricity">Electricity</option>
-                        <option value="water">Water</option>
-                        <option value="crime">Crime</option>
-                        <option value="service delivery">Service Delivery</option>
+                        <option value="Road and Transportation" id="concernCategory">Road and Transportaton</option>
+                        <option value="electricity" id="concernCategory">Electricity</option>
+                        <option value="water" id="concernCategory">Water</option>
+                        <option value="crime" id="concernCategory">Crime</option>
+                        <option value="service delivery" id="serviceDelivery">Service Delivery</option>
                     </select>
                     
                     <div class="py-3">
@@ -119,8 +79,30 @@ function getRouteContent(route) {
         default:
             return `
                 <h1>Home</h1>
-                <p>Welcome to Umphakathi Wethu! Explore our services and find out more.</p>
+                <p>Welcome to KasiAlot! Explore our services and find out more.</p>
             `;
+    }
+}
+
+// Function to get user's location
+function getLocation() {
+    const latitudeInput = document.getElementById('latitude');
+    const longitudeInput = document.getElementById('longitude');
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                latitudeInput.value = latitude;
+                longitudeInput.value = longitude;
+            },
+            (error) => {
+                console.error("Error getting location:", error);
+                alert("Unable to retrieve location.");
+            }
+        );
+    } else {
+        alert("Geolocation is not supported by your browser.");
     }
 }
 
