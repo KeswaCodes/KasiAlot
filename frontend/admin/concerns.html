@@ -152,10 +152,9 @@
     <h1 class="h2 my-4">Concerns</h1>
       <!-- Concerns Div -->
 
+      <!-- Service Delivery -->
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
-
-        <!-- Start of service delivery -->
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
               Service Delivery
@@ -163,98 +162,98 @@
           </h2>
           <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                          <th scope="col">ticket #</th>
-                          <th scope="col">Priority</th>
-                          <th scope="col">Message</th>
-                          <th scope="col">Handle</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                            <form action="">
-                                <th scope="row">1</th>
-                                <td>High</td>
-                                <td><input type="text" name="userMessage" id="userMessage" placeholder="Input user update"></td>
-                                <td><button type="submit" class="btn btn-success">Update</button> <button type="submit" class="btn btn-danger">Close</button></td>
-                              
-                            </form>
-                          </tr>
-                      </tbody>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Ticket no#</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">User Concern</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">23</th>
+                    <td>High</td>
+                    <td>We have a burst pipe, affecting the whole street's supply</td>
+                    <td><input type="text" name="update" id="update" placeholder="Udate the user"></td>
+                    <td><button type="button" class="btn btn-success">Update</button> <button type="button" class="btn btn-danger" onclick="removeRow(this)">Close</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">28</th>
+                    <td>Small</td>
+                    <td>Our street does not have electricity and I don't think it's loadshedding</td>
+                    <td><input type="text" name="update" id="update" placeholder="Udate the user"></td>
+                    <td><button type="button" class="btn btn-success">Update</button> <button type="button" class="btn btn-danger" onclick="removeRow(this)">Close</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">29</th>
+                    <td>Medium</td>
+                    <td>We have a pipe leakage at my neighbors house</td>
+                    <td><input type="text" name="update" id="update" placeholder="Udate the user"></td>
+                    <td><button type="button" class="btn btn-success">Update</button> <button type="button" class="btn btn-danger" onclick="removeRow(this)">Close</button></td>
+                  </tr>
+                </tbody>
+              
               </table>
             </div>
           </div>
-        <!-- /End of service delivery -->
+        </div>
 
-        <!-- Start of crime div -->
+        <!-- Road and transport -->
+        <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Road and Transport
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Ticket no#</th>
+                  <th scope="col">Priority</th>
+                  <th scope="col">User Concern</th>
+                  <th scope="col">Update</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">02</th>
+                  <td>Low</td>
+                  <td>There's a pothole I noticed in my street</td>
+                  <td><input type="text" name="update" id="update" placeholder="Udate the user"></td>
+                  <td><button type="button" class="btn btn-success">Update</button> <button type="button" class="btn btn-danger" onclick="removeRow(this)">Close</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">04</th>
+                  <td>High</td>
+                  <td>Our street lights</td>
+                  <td><input type="text" name="update" id="update" placeholder="Udate the user"></td>
+                  <td><button type="button" class="btn btn-success">Update</button> <button type="button" class="btn btn-danger" onclick="removeRow(this)">Close</button></td>
+                </tr>
+              </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      <!--End of Road and transport -->
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
               Crime
             </button>
           </h2>
-          <div id="flush-collapseOne" class="accordion-collapse" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                          <th scope="col">ticket #</th>
-                          <th scope="col">Priority</th>
-                          <th scope="col">Message</th>
-                          <th scope="col">Handle</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                            <form action="">
-                                <th scope="row">1</th>
-                                <td>High</td>
-                                <td><input type="text" name="userMessage" id="userMessage" placeholder="Input user update"></td>
-                                <td><button type="submit" class="btn btn-success">Update</button> <button type="submit" class="btn btn-danger">Close</button></td>
-                              
-                            </form>
-                          </tr>
-                      </tbody>
-              </table>
-            </div>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">No concerns under this category</div>
           </div>
-        <!-- /End of crime div -->
-
-        <!-- Start of road and transportaion div -->
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              Road and transportation
-            </button>
-          </h2>
-          <div id="flush-collapseOne" class="accordion-collapse" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                          <th scope="col">ticket #</th>
-                          <th scope="col">Priority</th>
-                          <th scope="col">Message</th>
-                          <th scope="col">Handle</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                            <form action="">
-                                <th scope="row">1</th>
-                                <td>High</td>
-                                <td><input type="text" name="userMessage" id="userMessage" placeholder="Input user update"></td>
-                                <td><button type="submit" class="btn btn-success">Update</button> <button type="submit" class="btn btn-danger">Close</button></td>
-                              
-                            </form>
-                          </tr>
-                      </tbody>
-              </table>
-            </div>
-          </div>
-        <!-- /End of crime div -->
-
         </div>
+      </div>
+        
       
       <!-- /Concerns Div -->
     </main>
@@ -266,5 +265,14 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js'></script><script  src="./script.js"></script>
 
+<script>
+ function removeRow(button) {
+    // Get the row of the clicked button and remove it
+    const row = button.closest('tr');
+    row.remove();
+
+    alert("Ticket has been closed")
+  }
+</script>
 </body>
 </html>
