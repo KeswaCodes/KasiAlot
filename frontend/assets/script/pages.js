@@ -67,6 +67,11 @@ function getRouteContent(route) {
                     <button type="submit" class="bg-emerald-500 rounded-lg p-2 text-base font-semibold text-white">Submit</button>
                 </form>
             `;
+        case 'default':
+            return `
+                <h1 class="text-3xl">Home</h1>
+
+            `;
     }
 }
 
